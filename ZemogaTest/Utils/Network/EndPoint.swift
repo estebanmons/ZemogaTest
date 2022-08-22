@@ -8,12 +8,18 @@
 import Foundation
 
 enum EndPoint {
-    case posts
+    case getPosts
+    case getPostComments(id: Int)
+    case getUser(id: Int)
     
     var path: String {
         switch self {
-        case .posts:
+        case .getPosts:
             return baseURL + "posts"
+        case .getPostComments(let id):
+            return baseURL + "posts/\(id)/comments"
+        case .getUser(let id):
+            return baseURL + "users/\(id)"
         }
     }
     

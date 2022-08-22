@@ -21,4 +21,9 @@ final class PostsWireframe: BaseWireframe {
 }
 
 // MARK: - Extensions -
-extension PostsWireframe: PostsWireframeInterface { }
+extension PostsWireframe: PostsWireframeInterface {
+    
+    func goToDetail() {
+        navigationController?.pushWireframe(PostDetailWireframe())
+    }
+}

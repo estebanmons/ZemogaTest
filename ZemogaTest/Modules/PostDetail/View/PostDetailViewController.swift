@@ -2,12 +2,12 @@
 //  PostDetailViewController.swift
 //  ZemogaTest
 //
-//  Created by Esteban Monsalve on 21/08/22.
+//  Created by Esteban Monsalve on 22/08/22.
 //
 
 import UIKit
 
-class PostDetailViewController: UIViewController {
+final class PostDetailViewController: UIViewController {
     
     // MARK: - Public properties -
     var presenter: PostDetailPresenterInterface!

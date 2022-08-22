@@ -7,10 +7,38 @@
 
 import Foundation
 
-protocol PostsWireframeInterface: WireframeInterface { }
+enum PostsResult {
+    case success([Post])
+    case error
+}
 
-protocol PostsViewInterface: ViewInterface { }
+enum SegmentedControlItems: Int, CaseIterable {
+    case all
+    case favorites
+    
+    var title: String {
+        switch self {
+        case .all: return "All"
+        case .favorites: return "Favorites"
+        }
+    }
+}
 
-protocol PostsPresenterInterface: PresenterInterface { }
+protocol PostsWireframeInterface: WireframeInterface {
+    func goToDetail()
+}
 
-protocol PostsInteractorInterface: InteractorInterface { }
+protocol PostsViewInterface: ViewInterface {
+    func reloadData()
+}
+
+protocol PostsPresenterInterface: PresenterInterface {
+    var numberOfItems: Int { get }
+    func setSelectedSegmentedControl(selected: Int)
+    func getPostData(at row: Int) -> Post
+    func refreshData()
+}
+
+protocol PostsInteractorInterface: InteractorInterface { 
+    func requestGetPost(completionHandler: @escaping (PostsResult) -> Void)
+}

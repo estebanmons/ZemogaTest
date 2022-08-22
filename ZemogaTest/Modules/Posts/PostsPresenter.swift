@@ -13,6 +13,10 @@ final class PostsPresenter {
     private unowned let view: PostsViewInterface
     private let interactor: PostsInteractorInterface
     private let wireframe: PostsWireframeInterface
+    
+    private var allPost = [Post]()
+    private var favoritesPost = [Post]()
+    private var selectedSegmentedControl: SegmentedControlItems = .all
 
     // MARK: - Lifecycle -
     init(
@@ -24,7 +28,49 @@ final class PostsPresenter {
         self.interactor = interactor
         self.wireframe = wireframe
     }
+    
+    private func getPosts() {
+        interactor.requestGetPost { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let posts):
+                strongSelf.allPost = posts
+                strongSelf.view.reloadData()
+            case .error:
+                print("Error")
+            }
+        }
+    }
 }
 
 // MARK: - Extensions -
-extension PostsPresenter: PostsPresenterInterface { }
+extension PostsPresenter: PostsPresenterInterface {
+    
+    var numberOfItems: Int {
+        switch selectedSegmentedControl {
+        case .all: return allPost.count
+        case .favorites: return favoritesPost.count
+        }
+    }
+    
+    func viewDidLoad() {
+        getPosts()
+    }
+    
+    func setSelectedSegmentedControl(selected: Int) {
+        guard let safeSelectedSegmentedControl = SegmentedControlItems(rawValue: selected) else { return }
+        selectedSegmentedControl = safeSelectedSegmentedControl
+        view.reloadData()
+    }
+    
+    func getPostData(at row: Int) -> Post {
+        switch selectedSegmentedControl {
+        case .all: return allPost[row]
+        case .favorites: return favoritesPost[row]
+        }
+    }
+    
+    func refreshData() {
+        getPosts()
+    }
+}

@@ -14,4 +14,16 @@ final class PostsInteractor {
 }
 
 // MARK: - Extensions -
-extension PostsInteractor: PostsInteractorInterface { }
+extension PostsInteractor: PostsInteractorInterface {
+    
+    func requestGetPost(completionHandler: @escaping (PostsResult) -> Void) {
+        apiManager.request(parameters: EmptyRequest(), endpoint: .getPosts) { (result: Result<[Post]>) in
+            switch result {
+            case .success(let data):
+                completionHandler(.success(data))
+            case .error:
+                completionHandler(.error)
+            }
+        }
+    }
+}
