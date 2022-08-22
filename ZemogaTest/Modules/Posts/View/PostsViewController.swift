@@ -92,7 +92,6 @@ final class PostsViewController: UIViewController {
     }
     
     private func setupTableView() {
-        
         tableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "postCell")
         tableView.dataSource = self
         tableView.delegate = self

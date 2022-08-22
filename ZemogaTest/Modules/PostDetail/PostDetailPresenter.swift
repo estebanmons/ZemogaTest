@@ -8,27 +8,33 @@
 import Foundation
 
 struct PostDetailModel {
+    var commentsTitle: String
     var description: String
+    var descriptionTitle: String
     var email: String
     var name: String
     var phone: String
-    var title: String
+    var userTitle: String
     var website: String
     
     init(
+        commentsTitle: String = Constants.emptyString,
         description: String,
+        descriptionTitle: String,
         email: String = Constants.emptyString,
         name: String = Constants.emptyString,
         phone: String = Constants.emptyString,
-        title: String,
-        website: String = Constants.emptyString
+        website: String = Constants.emptyString,
+        userTitle: String = Constants.emptyString
     ) {
+        self.commentsTitle = commentsTitle
         self.description = description
+        self.descriptionTitle = descriptionTitle
         self.email = email
         self.name = name
         self.phone = phone
-        self.title = title
         self.website = website
+        self.userTitle = userTitle
     }
 }
 
@@ -58,7 +64,7 @@ final class PostDetailPresenter {
     private func getDetailPost() {
         guard let post = post else { return }
         let queue = OperationQueue()
-        var model = PostDetailModel(description: post.body, title: Constants.PostDetail.description)
+        var model = PostDetailModel(description: post.body, descriptionTitle: Constants.PostDetail.description)
         
         let userOperation = AsyncBlockOperation { [weak self] operation in
             guard let strongSelf = self else {
@@ -69,10 +75,11 @@ final class PostDetailPresenter {
             strongSelf.interactor.requestGetUser(id: post.userId) { result in
                 switch result {
                 case .success(let user):
+                    model.userTitle = Constants.PostDetail.user
                     model.name = user.name
                     model.email = user.email
                     model.phone = user.phone
-                    model.email = user.email
+                    model.website = user.website
                 case .error:
                     break
                 }
@@ -89,6 +96,7 @@ final class PostDetailPresenter {
             strongSelf.interactor.requestGetPostComments(id: post.id) { result in
                 switch result {
                 case .success(let comments):
+                    model.commentsTitle = Constants.PostDetail.comments
                     strongSelf.postComments = comments
                 case .error:
                     break
@@ -118,7 +126,15 @@ final class PostDetailPresenter {
 // MARK: - Extensions -
 extension PostDetailPresenter: PostDetailPresenterInterface {
     
+    var numberOfItems: Int {
+        postComments.count
+    }
+    
     func viewDidLoad() {
         getDetailPost()
+    }
+    
+    func setComment(at row: Int) -> String {
+        return postComments[row].body
     }
 }

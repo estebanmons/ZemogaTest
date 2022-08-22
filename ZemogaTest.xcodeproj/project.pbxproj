@@ -25,6 +25,8 @@
 		478DC9A828B3170A00C3EC96 /* PresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DC9A728B3170A00C3EC96 /* PresenterInterface.swift */; };
 		478DC9AA28B3172200C3EC96 /* InteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DC9A928B3172200C3EC96 /* InteractorInterface.swift */; };
 		478DC9AD28B31A8A00C3EC96 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DC9AC28B31A8A00C3EC96 /* Constants.swift */; };
+		47C4885628B4189400D30E1C /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4885428B4189400D30E1C /* CommentTableViewCell.swift */; };
+		47C4885728B4189400D30E1C /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47C4885528B4189400D30E1C /* CommentTableViewCell.xib */; };
 		47D7452228B3204E00D7BFBD /* PostDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D7452128B3204E00D7BFBD /* PostDetailInteractor.swift */; };
 		47D7452428B3267F00D7BFBD /* PostDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D7452328B3267F00D7BFBD /* PostDetailPresenter.swift */; };
 		47D7452628B3268C00D7BFBD /* PostDetailInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D7452528B3268C00D7BFBD /* PostDetailInterfaces.swift */; };
@@ -76,6 +78,8 @@
 		478DC9A728B3170A00C3EC96 /* PresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterInterface.swift; sourceTree = "<group>"; };
 		478DC9A928B3172200C3EC96 /* InteractorInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorInterface.swift; sourceTree = "<group>"; };
 		478DC9AC28B31A8A00C3EC96 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		47C4885428B4189400D30E1C /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		47C4885528B4189400D30E1C /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		47D7452128B3204E00D7BFBD /* PostDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailInteractor.swift; sourceTree = "<group>"; };
 		47D7452328B3267F00D7BFBD /* PostDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailPresenter.swift; sourceTree = "<group>"; };
 		47D7452528B3268C00D7BFBD /* PostDetailInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailInterfaces.swift; sourceTree = "<group>"; };
@@ -200,6 +204,15 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		47C4885328B4186500D30E1C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				47C4885428B4189400D30E1C /* CommentTableViewCell.swift */,
+				47C4885528B4189400D30E1C /* CommentTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		47D7452028B3201000D7BFBD /* PostDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +228,7 @@
 		47D7452928B326AF00D7BFBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				47C4885328B4186500D30E1C /* Cell */,
 				474F110228B3E185005ADD60 /* PostDetailViewController.swift */,
 				474F110328B3E185005ADD60 /* PostDetailViewController.xib */,
 			);
@@ -405,6 +419,7 @@
 				474F110528B3E185005ADD60 /* PostDetailViewController.xib in Resources */,
 				47E3EF6A28B2EAFE00E7BD09 /* LaunchScreen.storyboard in Resources */,
 				47E3EF6728B2EAFE00E7BD09 /* Assets.xcassets in Resources */,
+				47C4885728B4189400D30E1C /* CommentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +446,7 @@
 			files = (
 				478DC99828B3154700C3EC96 /* PostsWireframe.swift in Sources */,
 				47D7452828B326A600D7BFBD /* PostDetailWireframe.swift in Sources */,
+				47C4885628B4189400D30E1C /* CommentTableViewCell.swift in Sources */,
 				474F110428B3E185005ADD60 /* PostDetailViewController.swift in Sources */,
 				478DC9A428B3167300C3EC96 /* BaseWireframe.swift in Sources */,
 				478DC99028B313C100C3EC96 /* APIManager.swift in Sources */,

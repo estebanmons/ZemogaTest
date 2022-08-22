@@ -23,7 +23,10 @@ protocol PostDetailViewInterface: ViewInterface {
     func setModelData(with model: PostDetailModel)
 }
 
-protocol PostDetailPresenterInterface: PresenterInterface { }
+protocol PostDetailPresenterInterface: PresenterInterface {
+    var numberOfItems: Int { get }
+    func setComment(at row: Int) -> String
+}
 
 protocol PostDetailInteractorInterface: InteractorInterface {
     func requestGetUser(id: Int, completionHandler: @escaping (PostUserRsult) -> Void)

@@ -23,7 +23,8 @@ struct Constants {
     }
     
     struct PostDetail {
-        static let description = "Description"
         static let comments = "Comments"
+        static let description = "Description"
+        static let user = "User"
     }
 }
