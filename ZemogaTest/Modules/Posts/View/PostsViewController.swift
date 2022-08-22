@@ -68,11 +68,11 @@ final class PostsViewController: UIViewController {
         appearance.configureWithOpaqueBackground()
         appearance.titleTextAttributes =  [.foregroundColor: UIColor.white]
         appearance.backgroundColor = .systemGreen
+        navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance =  navigationController?.navigationBar.standardAppearance
         
         let button = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(handleRefreshButton))
-        button.tintColor = .white
         navigationItem.rightBarButtonItem = button
     }
     
@@ -147,5 +147,9 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setData(with: presenter.getPostData(at: indexPath.row).title)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectItem(row: indexPath.row)
     }
 }

@@ -25,7 +25,7 @@ enum SegmentedControlItems: Int, CaseIterable {
 }
 
 protocol PostsWireframeInterface: WireframeInterface {
-    func goToDetail()
+    func goToDetail(post: Post)
 }
 
 protocol PostsViewInterface: ViewInterface {
@@ -37,6 +37,7 @@ protocol PostsPresenterInterface: PresenterInterface {
     func setSelectedSegmentedControl(selected: Int)
     func getPostData(at row: Int) -> Post
     func refreshData()
+    func didSelectItem(row: Int)
 }
 
 protocol PostsInteractorInterface: InteractorInterface { 

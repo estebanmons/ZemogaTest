@@ -73,4 +73,13 @@ extension PostsPresenter: PostsPresenterInterface {
     func refreshData() {
         getPosts()
     }
+    
+    func didSelectItem(row: Int) {
+        let post: Post
+        switch selectedSegmentedControl {
+        case .all: post = allPost[row]
+        case .favorites: post = favoritesPost[row]
+        }
+        wireframe.goToDetail(post: post)
+    }
 }

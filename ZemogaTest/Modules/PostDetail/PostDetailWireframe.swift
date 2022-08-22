@@ -10,12 +10,12 @@ import Foundation
 final class PostDetailWireframe: BaseWireframe {
 
     // MARK: - Module setup -
-    init() {
+    init(post: Post) {
         let moduleViewController = PostDetailViewController()
         super.init(viewController: moduleViewController)
 
         let interactor = PostDetailInteractor()
-        let presenter = PostDetailPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
+        let presenter = PostDetailPresenter(view: moduleViewController, interactor: interactor, wireframe: self, post: post)
         moduleViewController.presenter = presenter
     }
 }
