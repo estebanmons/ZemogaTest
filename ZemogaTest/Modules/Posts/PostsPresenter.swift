@@ -91,4 +91,14 @@ extension PostsPresenter: PostsPresenterInterface {
         }
         wireframe.goToDetail(post: post)
     }
+    
+    func deleteAll() {
+        switch selectedSegmentedControl {
+        case .all:
+            allPost = []
+        case .favorites:
+            interactor.dataManager.removeAllFavorites()
+        }
+        view.reloadData()
+    }
 }

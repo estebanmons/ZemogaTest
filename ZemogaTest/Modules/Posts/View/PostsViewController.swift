@@ -10,6 +10,15 @@ import UIKit
 final class PostsViewController: UIViewController {
     
     // MARK: - Private properties -
+    private lazy var deleteAllButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .red
+        button.setTitle(Constants.Posts.delete, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(self, action: #selector(handleDeleteAllButton), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
@@ -85,6 +94,7 @@ final class PostsViewController: UIViewController {
         view.addSubview(stackView)
         stackView.addArrangedSubview(segmentedControl)
         stackView.addArrangedSubview(tableView)
+        stackView.addArrangedSubview(deleteAllButton)
     }
     
     private func setConstraints() {
@@ -92,7 +102,9 @@ final class PostsViewController: UIViewController {
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8.0),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            deleteAllButton.heightAnchor.constraint(equalToConstant: 40.0)
         ])
     }
     
@@ -121,6 +133,10 @@ final class PostsViewController: UIViewController {
     
     @objc func handleRefreshButton() {
         presenter.refreshData()
+    }
+    
+    @objc func handleDeleteAllButton() {
+        presenter.deleteAll()
     }
 }
 

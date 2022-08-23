@@ -22,6 +22,10 @@ struct Constants {
         static let message = "Se ha producido un incoveniente, vuelve a reintentar por favor."
     }
     
+    struct Posts {
+        static let delete = "Delete All"
+    }
+    
     struct PostDetail {
         static let comments = "Comments"
         static let description = "Description"

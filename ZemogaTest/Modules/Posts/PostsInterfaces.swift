@@ -44,6 +44,7 @@ protocol PostsPresenterInterface: PresenterInterface {
     func getPostData(at row: Int) -> PostModel
     func refreshData()
     func didSelectItem(row: Int)
+    func deleteAll()
 }
 
 protocol PostsInteractorInterface: InteractorInterface {
