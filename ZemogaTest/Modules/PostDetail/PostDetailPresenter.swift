@@ -126,6 +126,11 @@ final class PostDetailPresenter {
 // MARK: - Extensions -
 extension PostDetailPresenter: PostDetailPresenterInterface {
     
+    var isFavorite: Bool {
+        guard let post = post else { return false }
+        return interactor.dataManager.containFavorite(id: post.id)
+    }
+    
     var numberOfItems: Int {
         postComments.count
     }
@@ -136,5 +141,14 @@ extension PostDetailPresenter: PostDetailPresenterInterface {
     
     func setComment(at row: Int) -> String {
         return postComments[row].body
+    }
+    
+    func validateFavorite() {
+        guard let post = post else { return }
+        if interactor.dataManager.containFavorite(id: post.id) {
+            interactor.dataManager.removeFavorite(id: post.id)
+        } else {
+            interactor.dataManager.saveFavorite(post: post)
+        }
     }
 }

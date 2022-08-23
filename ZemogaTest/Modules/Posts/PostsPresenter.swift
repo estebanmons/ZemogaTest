@@ -15,7 +15,6 @@ final class PostsPresenter {
     private let wireframe: PostsWireframeInterface
     
     private var allPost = [Post]()
-    private var favoritesPost = [Post]()
     private var selectedSegmentedControl: SegmentedControlItems = .all
 
     // MARK: - Lifecycle -
@@ -46,6 +45,10 @@ final class PostsPresenter {
 // MARK: - Extensions -
 extension PostsPresenter: PostsPresenterInterface {
     
+    var favoritesPost: [Post] {
+        interactor.dataManager.loadFavorites()
+    }
+    
     var numberOfItems: Int {
         switch selectedSegmentedControl {
         case .all: return allPost.count
@@ -57,16 +60,22 @@ extension PostsPresenter: PostsPresenterInterface {
         getPosts()
     }
     
+    func viewWillAppear(animated: Bool) {
+        if selectedSegmentedControl == .favorites {
+            view.reloadData()
+        }
+    }
+    
     func setSelectedSegmentedControl(selected: Int) {
         guard let safeSelectedSegmentedControl = SegmentedControlItems(rawValue: selected) else { return }
         selectedSegmentedControl = safeSelectedSegmentedControl
         view.reloadData()
     }
     
-    func getPostData(at row: Int) -> Post {
+    func getPostData(at row: Int) -> PostModel {
         switch selectedSegmentedControl {
-        case .all: return allPost[row]
-        case .favorites: return favoritesPost[row]
+        case .all: return PostModel(title: allPost[row].title, type: selectedSegmentedControl)
+        case .favorites: return PostModel(title: favoritesPost[row].title, type: selectedSegmentedControl)
         }
     }
     

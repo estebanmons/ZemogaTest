@@ -63,6 +63,11 @@ final class PostsViewController: UIViewController {
         presenter.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear(animated: animated)
+    }
+    
     private func configureNavigationBar() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -143,7 +148,7 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        cell.setData(with: presenter.getPostData(at: indexPath.row).title)
+        cell.setData(with: presenter.getPostData(at: indexPath.row))
         
         return cell
     }

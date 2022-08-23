@@ -26,8 +26,19 @@ final class PostDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = Constants.Title.post
+        configureNavigationBar()
         setupTableView()
         presenter.viewDidLoad()
+    }
+    
+    private func configureNavigationBar() {
+        let image = UIImage(systemName: presenter.isFavorite ? Constants.PostDetail.starFillImage : Constants.PostDetail.starImage)
+        let button = UIButton(type: .system)
+        button.setImage(image, for: .normal)
+        button.addTarget(self, action: #selector(handleFavoriteButton), for: .touchUpInside)
+        button.contentHorizontalAlignment = .right
+        button.semanticContentAttribute = .forceRightToLeft
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     private func setupView() {
@@ -56,6 +67,12 @@ final class PostDetailViewController: UIViewController {
         commentsTableView.dataSource = self
         commentsTableView.delegate = self
         commentsTableView.backgroundColor = .systemGray6
+    }
+    
+    @objc private func handleFavoriteButton() {
+        presenter.validateFavorite()
+        navigationItem.rightBarButtonItem = nil
+        configureNavigationBar()
     }
 }
 

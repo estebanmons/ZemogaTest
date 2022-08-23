@@ -24,11 +24,14 @@ protocol PostDetailViewInterface: ViewInterface {
 }
 
 protocol PostDetailPresenterInterface: PresenterInterface {
+    var isFavorite: Bool { get }
     var numberOfItems: Int { get }
     func setComment(at row: Int) -> String
+    func validateFavorite()
 }
 
 protocol PostDetailInteractorInterface: InteractorInterface {
+    var dataManager: DataManager { get }
     func requestGetUser(id: Int, completionHandler: @escaping (PostUserRsult) -> Void)
     func requestGetPostComments(id: Int, completionHandler: @escaping (PostCommentsResult) -> Void)
 }

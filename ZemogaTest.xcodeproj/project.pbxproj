@@ -27,6 +27,7 @@
 		478DC9AD28B31A8A00C3EC96 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 478DC9AC28B31A8A00C3EC96 /* Constants.swift */; };
 		47C4885628B4189400D30E1C /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4885428B4189400D30E1C /* CommentTableViewCell.swift */; };
 		47C4885728B4189400D30E1C /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47C4885528B4189400D30E1C /* CommentTableViewCell.xib */; };
+		47C4885A28B43D4400D30E1C /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C4885928B43D4400D30E1C /* DataManager.swift */; };
 		47D7452228B3204E00D7BFBD /* PostDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D7452128B3204E00D7BFBD /* PostDetailInteractor.swift */; };
 		47D7452428B3267F00D7BFBD /* PostDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D7452328B3267F00D7BFBD /* PostDetailPresenter.swift */; };
 		47D7452628B3268C00D7BFBD /* PostDetailInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D7452528B3268C00D7BFBD /* PostDetailInterfaces.swift */; };
@@ -80,6 +81,7 @@
 		478DC9AC28B31A8A00C3EC96 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		47C4885428B4189400D30E1C /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		47C4885528B4189400D30E1C /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		47C4885928B43D4400D30E1C /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		47D7452128B3204E00D7BFBD /* PostDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailInteractor.swift; sourceTree = "<group>"; };
 		47D7452328B3267F00D7BFBD /* PostDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailPresenter.swift; sourceTree = "<group>"; };
 		47D7452528B3268C00D7BFBD /* PostDetailInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailInterfaces.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		478DC98D28B3138600C3EC96 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				47C4885828B43D3400D30E1C /* DataManager */,
 				478DC9A228B3164F00C3EC96 /* Base */,
 				478DC9AB28B31A3600C3EC96 /* Constants */,
 				47D7452C28B3307900D7BFBD /* Models */,
@@ -211,6 +214,14 @@
 				47C4885528B4189400D30E1C /* CommentTableViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		47C4885828B43D3400D30E1C /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				47C4885928B43D4400D30E1C /* DataManager.swift */,
+			);
+			path = DataManager;
 			sourceTree = "<group>";
 		};
 		47D7452028B3201000D7BFBD /* PostDetail */ = {
@@ -455,6 +466,7 @@
 				47D7452428B3267F00D7BFBD /* PostDetailPresenter.swift in Sources */,
 				478DC99C28B3157D00C3EC96 /* PostsInteractor.swift in Sources */,
 				478DC99A28B3155A00C3EC96 /* PostsInterfaces.swift in Sources */,
+				47C4885A28B43D4400D30E1C /* DataManager.swift in Sources */,
 				47D7453228B332A200D7BFBD /* User.swift in Sources */,
 				47D7453028B3315800D7BFBD /* Comment.swift in Sources */,
 				47E3EF5E28B2EAFC00E7BD09 /* AppDelegate.swift in Sources */,

@@ -26,5 +26,7 @@ struct Constants {
         static let comments = "Comments"
         static let description = "Description"
         static let user = "User"
+        static let starImage = "star"
+        static let starFillImage = "star.fill"
     }
 }

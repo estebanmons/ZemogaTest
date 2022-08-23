@@ -16,6 +16,8 @@ final class PostsInteractor {
 // MARK: - Extensions -
 extension PostsInteractor: PostsInteractorInterface {
     
+    var dataManager: DataManager { DataManager.sharedInstance }
+    
     func requestGetPost(completionHandler: @escaping (PostsResult) -> Void) {
         apiManager.request(parameters: EmptyRequest(), endpoint: .getPosts) { (result: Result<[Post]>) in
             switch result {

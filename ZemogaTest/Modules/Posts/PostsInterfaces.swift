@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct PostModel {
+    let title: String
+    let type: SegmentedControlItems
+}
+
 enum PostsResult {
     case success([Post])
     case error
@@ -33,13 +38,15 @@ protocol PostsViewInterface: ViewInterface {
 }
 
 protocol PostsPresenterInterface: PresenterInterface {
+    var favoritesPost: [Post] { get }
     var numberOfItems: Int { get }
     func setSelectedSegmentedControl(selected: Int)
-    func getPostData(at row: Int) -> Post
+    func getPostData(at row: Int) -> PostModel
     func refreshData()
     func didSelectItem(row: Int)
 }
 
-protocol PostsInteractorInterface: InteractorInterface { 
+protocol PostsInteractorInterface: InteractorInterface {
+    var dataManager: DataManager { get }
     func requestGetPost(completionHandler: @escaping (PostsResult) -> Void)
 }

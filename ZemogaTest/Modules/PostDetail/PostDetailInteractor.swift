@@ -16,6 +16,8 @@ final class PostDetailInteractor {
 // MARK: - Extensions -
 extension PostDetailInteractor: PostDetailInteractorInterface {
     
+    var dataManager: DataManager { DataManager.sharedInstance }
+    
     func requestGetUser(id: Int, completionHandler: @escaping (PostUserRsult) -> Void) {
         apiManager.request(parameters: EmptyRequest(), endpoint: .getUser(id: id)) { (result: Result<User>) in
             switch result {
