@@ -36,7 +36,7 @@ final class PostsPresenter {
                 strongSelf.allPost = posts
                 strongSelf.view.reloadData()
             case .error:
-                print("Error")
+                strongSelf.wireframe.showAlert(Constants.Alert.title, message: Constants.Alert.message)
             }
         }
     }

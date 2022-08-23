@@ -40,3 +40,8 @@ class PostTableViewCell: UITableViewCell {
         }
     }
 }
+
+extension PostTableViewCell {
+    static let cell = String(describing: PostTableViewCell.self)
+    static let reuseIdentifier = "postCell"
+}

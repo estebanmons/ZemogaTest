@@ -63,7 +63,9 @@ final class PostDetailViewController: UIViewController {
     }
     
     private func setupTableView() {
-        commentsTableView.register(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "commentCell")
+        commentsTableView.register(
+            UINib(nibName: CommentTableViewCell.cell, bundle: nil), forCellReuseIdentifier: CommentTableViewCell.reuseIdentifier
+        )
         commentsTableView.dataSource = self
         commentsTableView.delegate = self
         commentsTableView.backgroundColor = .systemGray6

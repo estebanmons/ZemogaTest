@@ -60,8 +60,6 @@ final class PostsViewController: UIViewController {
         return tableView
     }()
     
-    private let cellIdentifier = "postCell"
-    
     // MARK: - Public properties -
     var presenter: PostsPresenterInterface!
 
@@ -109,7 +107,9 @@ final class PostsViewController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "postCell")
+        tableView.register(
+            UINib(nibName: PostTableViewCell.cell, bundle: nil), forCellReuseIdentifier: PostTableViewCell.reuseIdentifier
+        )
         tableView.dataSource = self
         tableView.delegate = self
         tableView.addSubview(refreshControl)
@@ -158,7 +158,7 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: "postCell",
+            withIdentifier: PostTableViewCell.reuseIdentifier,
             for: indexPath
         ) as? PostTableViewCell else {
             return UITableViewCell()

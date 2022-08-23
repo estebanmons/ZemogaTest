@@ -8,10 +8,15 @@
 import UIKit
 
 protocol WireframeInterface: AnyObject {
+    func showAlert(_ title: String, message: String)
     func showAlertWithAction(_ title: String, message: String, handler: @escaping () -> Void)
 }
 
 extension WireframeInterface {
+    
+    func showAlert(_ title: String, message: String) {
+        showAlert(title, message: message)
+    }
     
     func showAlertWithAction(_ title: String, message: String, handler: @escaping () -> Void) {
         showAlertWithAction(title, message: message, handler: handler)
@@ -32,6 +37,10 @@ class BaseWireframe {
 }
 
 extension BaseWireframe: WireframeInterface {
+    
+    func showAlert(_ title: String, message: String) {
+        self.viewController.showAlertWithTitle(title, message: message)
+    }
     
     func showAlertWithAction(
         _ title: String,
@@ -58,6 +67,14 @@ extension UIViewController {
 
     func presentWireframe(_ wireframe: BaseWireframe, animated: Bool = true, completion: (()->())? = nil) {
         present(wireframe.viewController, animated: animated, completion: completion)
+    }
+    
+    func showAlertWithTitle(_ title: String, message: String, buttonTitle: String = Constants.Alert.accept) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction.init(title: buttonTitle, style: .cancel, handler: nil))
+        DispatchQueue.main.async(execute: {
+            self.present(alertController, animated: true, completion: nil)
+        })
     }
     
     func showAlertWithActions(

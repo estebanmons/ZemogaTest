@@ -24,3 +24,8 @@ class CommentTableViewCell: UITableViewCell {
         commentLabel.text = comment
     }
 }
+
+extension CommentTableViewCell {
+    static let cell = String(describing: CommentTableViewCell.self)
+    static let reuseIdentifier = "commentCell"
+}
